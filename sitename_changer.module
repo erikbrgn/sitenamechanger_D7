@@ -44,6 +44,7 @@ function sitename_changer_form($form, &$form_state) {
     // Displaying success message. Fetching saved site name instead of textfield value.
     drupal_set_message(t('Site name has been changed to "@name"', ['@name' => getSiteName()]));
   } 
+  //utility function
   function getSiteName () {
     $site_name = variable_get('site_name', 'Default');
     return $site_name;
