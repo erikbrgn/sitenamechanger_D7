@@ -13,13 +13,13 @@ In order for this module to work you must have a site running Drupal 7.x. If you
 
 ### Installing
 
-Simply clone this repository and place it under.
+Simply clone this repository and place it under:
 ```
-"YourDrupalSite"\sites\all\modules\custom
+"YourDrupalSite"\sites\all\modules\
 ```
-If there is no custom folder either create it or just place the module directly in the modules folder.
+This module belongs to package "Custom". If you want to add other modules to this package use "package = Custom".
 
-Go to Modules on your site and select sitenamechanger under "Other" and then press 'Save configuration'.
+Go to Modules on your site and select sitenamechanger under "Custom" and then press 'Save configuration'.
 
 ## How to use
 To use the module, access it by adding this to your url.
