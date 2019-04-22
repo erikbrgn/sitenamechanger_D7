@@ -1,3 +1,4 @@
 name = Site Name Changer
 description = "Changes the current name of the site to any specified value."
 core = 7.x
+package = Custom
