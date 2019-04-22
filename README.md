@@ -15,7 +15,7 @@ In order for this module to work you must have a site running Drupal 7.x. If you
 
 Simply clone this repository and place it under:
 ```
-"YourDrupalSite"\sites\all\modules\
+"my_root_folder"\sites\all\modules\
 ```
 This module belongs to package "Custom". If you want to add other modules to this package use "package = Custom".
 
