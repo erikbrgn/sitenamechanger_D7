@@ -2,10 +2,14 @@
 
 /**
  * @file
+ * This module changes the current name of the site.
+ *
+ * @package sitename_changer
+ * @author Erik Berggren <94erbe28@gmail.com>
  */
 
 /**
- *
+ * Specifies how to access the module.
  */
 function sitename_changer_menu() {
   $items = array();
@@ -22,7 +26,7 @@ function sitename_changer_menu() {
 }
 
 /**
- *
+ * Builds the form.
  */
 function sitename_changer_form($form, &$form_state) {
   $form['site_name'] = array(
@@ -41,7 +45,7 @@ function sitename_changer_form($form, &$form_state) {
 }
 
 /**
- *
+ * Validates the form. It can either pass or fail.
  */
 function sitename_changer_form_validate($form, &$form_state) {
   // Checks to see if specified name is the same as the current site name.
@@ -51,20 +55,21 @@ function sitename_changer_form_validate($form, &$form_state) {
 }
 
 /**
- *
+ * Submits the form and executes instructions given.
  */
 function sitename_changer_form_submit($form, &$form_state) {
   // Set site name to the specified value.
   variable_set('site_name', $form_state['values']['site_name']);
 
-  // Displaying success message. Fetching saved site name instead of textfield value.
+  // Displaying success message.
+  // Fetching saved site name instead of textfield value.
   drupal_set_message(t('Site name has been changed to "@name"', ['@name' => getSiteName()]));
 }
 
 /**
  * Utility function.
  */
-function getSiteName() {
+function get_site_name() {
   $site_name = variable_get('site_name', 'Default');
   return $site_name;
 }
