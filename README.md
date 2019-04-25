@@ -30,5 +30,3 @@ To use the module, access it by adding this to your url.
 ## Authors
 
 * **Erik Berggren**  - [erikbrgn](https://github.com/erikbrgn)
-
-

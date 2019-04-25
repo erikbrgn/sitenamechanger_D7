@@ -1,52 +1,70 @@
 <?php
 
-function sitename_changer_menu() {
-    $items = array();
-    
-    $items ['custom-site-settings'] = array(
-        'title' => 'Site Name Changer',
-        'page callback' => 'drupal_get_form',
-        'page arguments' => array('sitename_changer_form'),
-        'access arguments' => array('access content'),
-        'type' => MENU_CALLBACK,
-     );
+/**
+ * @file
+ */
 
-    return $items;
+/**
+ *
+ */
+function sitename_changer_menu() {
+  $items = array();
+
+  $items['custom-site-settings'] = array(
+    'title' => 'Site Name Changer',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('sitename_changer_form'),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
 }
 
+/**
+ *
+ */
 function sitename_changer_form($form, &$form_state) {
-    $form['site_name'] = array(
-      '#type' => 'textfield',
-      '#title' => t("Current name: ". getSiteName()),
-      //'#default_value' => $this->getSiteName(),
+  $form['site_name'] = array(
+    '#type' => 'textfield',
+    '#title' => t("Current name: " . getSiteName()),
+      // '#default_value' => $this->getSiteName(),
       // $this->getSiteName()
-    );
-    $form['actions']['#type'] = 'actions';
-    $form['actions']['submit'] = array(
-      '#type' => 'submit',
-      '#value' => t('Save'),
-      '#button_type' => 'primary',
-    );
-    return $form;
-  }
-  function sitename_changer_form_validate($form, &$form_state) {
-    // Checks to see if specified name is the same as the current site name 
-    if ($form_state['values']['site_name']==getSiteName()) {
-      form_set_error('site_name', t('Site name is already set to '. $form_state['values']['site_name']));
-    }
-  }
+  );
+  $form['actions']['#type'] = 'actions';
+  $form['actions']['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Save'),
+    '#button_type' => 'primary',
+  );
+  return $form;
+}
 
- 
-  function sitename_changer_form_submit($form, &$form_state) {
-    //Set site name to the specified value
-    variable_set('site_name', $form_state['values']['site_name']);
-   
-    // Displaying success message. Fetching saved site name instead of textfield value.
-    drupal_set_message(t('Site name has been changed to "@name"', ['@name' => getSiteName()]));
-  } 
-  //utility function
-  function getSiteName () {
-    $site_name = variable_get('site_name', 'Default');
-    return $site_name;
-  } 
-    
+/**
+ *
+ */
+function sitename_changer_form_validate($form, &$form_state) {
+  // Checks to see if specified name is the same as the current site name.
+  if ($form_state['values']['site_name'] == getSiteName()) {
+    form_set_error('site_name', t('Site name is already set to ' . $form_state['values']['site_name']));
+  }
+}
+
+/**
+ *
+ */
+function sitename_changer_form_submit($form, &$form_state) {
+  // Set site name to the specified value.
+  variable_set('site_name', $form_state['values']['site_name']);
+
+  // Displaying success message. Fetching saved site name instead of textfield value.
+  drupal_set_message(t('Site name has been changed to "@name"', ['@name' => getSiteName()]));
+}
+
+/**
+ * Utility function.
+ */
+function getSiteName() {
+  $site_name = variable_get('site_name', 'Default');
+  return $site_name;
+}
