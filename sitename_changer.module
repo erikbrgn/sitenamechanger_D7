@@ -31,7 +31,7 @@ function sitename_changer_menu() {
 function sitename_changer_form($form, &$form_state) {
   $form['site_name'] = array(
     '#type' => 'textfield',
-    '#title' => t("Current name: " . getSiteName()),
+    '#title' => t("Current name: " . get_site_name()),
       // '#default_value' => $this->getSiteName(),
       // $this->getSiteName()
   );
@@ -49,7 +49,7 @@ function sitename_changer_form($form, &$form_state) {
  */
 function sitename_changer_form_validate($form, &$form_state) {
   // Checks to see if specified name is the same as the current site name.
-  if ($form_state['values']['site_name'] == getSiteName()) {
+  if ($form_state['values']['site_name'] == get_site_name()) {
     form_set_error('site_name', t('Site name is already set to ' . $form_state['values']['site_name']));
   }
 }
@@ -63,7 +63,7 @@ function sitename_changer_form_submit($form, &$form_state) {
 
   // Displaying success message.
   // Fetching saved site name instead of textfield value.
-  drupal_set_message(t('Site name has been changed to "@name"', ['@name' => getSiteName()]));
+  drupal_set_message(t('Site name has been changed to "@name"', ['@name' => get_site_name()]));
 }
 
 /**
